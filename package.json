@@ -1,0 +1,17 @@
+{
+  "name": "path-daddy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch --progress"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "svgpath": "^2.2.1",
+    "webpack": "^3.11.0"
+  }
+}
