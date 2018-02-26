@@ -4,10 +4,11 @@
         <meta charset="utf-8"/>
         <title>Path daddy</title>
         <link href="https://styleguide.brainly.com/130.9.0/style-guide.css" rel="stylesheet"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
         <script src="bundle.js" defer></script> 
     </head>
     <body>
-        <div class="sg-layout">
+        <div class="sg-layout js-root">
             <div class="sg-layout__container sg-layout__container--reversed-order">
                 <div class="sg-layout__content">
                     <div class="sg-layout__box">
@@ -37,9 +38,7 @@
                             </label>
                         </div>
                         <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">
-                            <textarea id="input-textarea" class="sg-textarea sg-textarea--full-width sg-textarea--tall js-textarea-input" placeholder="GIVE ME SOME PATH">
-                                M425.39,126.54c-22.43-1.27-44.68-14.38-62.7-26.79a216.74,216.74,0,0,1-31.56-26.32c-9.31-9.45-16.41-20.53-25.24-30.35-36.78-40.88-97.12-54.45-147.81-33a131.7,131.7,0,0,0-63.74,57.7H210.47c3.08,0,7.32-.68,9.49,2,4.12,5.14-1.73,8.73-6.31,8.78-26.45.3-132.86-.33-159.6,0-17,.21-33.58,10.78-43.22,24.33-15.66,22-13.88,52.86,4.13,73A59.14,59.14,0,0,0,32.52,189.4h68c2.6,0,6-.57,8.57.14,4.73,1.32,5.66,7.88,1.14,10.12a9.09,9.09,0,0,1-4.11.55c-12.06.25-58.84,0-70.15,0a58.71,58.71,0,0,0-1.73,107.5h67.88c3.16,0,7.71-.77,9.95,2,4.61,5.76-2.4,8.78-7,8.78H34.22A59.42,59.42,0,0,0,0,370.26c-.74,22.6,12.36,44.12,32.54,54.17,12.78,6.37,25.82,6.14,39.49,6.14H658.9V127.08S425.43,126.72,425.39,126.54Z
-                            </textarea>
+                            <textarea v-on:input="pathMethod" v-model="path" id="input-textarea" class="sg-textarea sg-textarea--full-width sg-textarea--tall js-textarea-input" placeholder="GIVE ME SOME PATH"></textarea>
                         </div>
                     </div> 
                     <div class="sg-content-box">
@@ -47,25 +46,25 @@
                             <label>
                                 <span class="sg-header-secondary">You can scale it</span>
                             </label>
-                            <input type="number" step="0.1" class="sg-input js-scale" placeholder="scale it">
+                            <input v-on:input="scaleMethod" v-model="scale" type="number" step="0.1" class="sg-input js-scale" placeholder="scale it">
                         </div>
                         <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">
                             <label>
                                 <span class="sg-header-secondary">Translate X</span>
                             </label>
-                            <input type="number" class="sg-input js-translate-x" placeholder="translate x">
+                            <input v-on:input="translateXMethod" v-model="x" type="number" class="sg-input js-translate-x" placeholder="translate x">
                         </div>
                         <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">
                             <label>
                                 <span class="sg-header-secondary">Translate Y</span>
                             </label>
-                            <input type="number" class="sg-input js-translate-y" placeholder="translate y">
+                            <input v-on:input="translateYMethod" v-model="y" type="number" class="sg-input js-translate-y" placeholder="translate y">
                         </div>
                         <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">
                             <label>
                                 <span class="sg-header-secondary">Rotate</span>
                             </label>
-                            <input type="number" class="sg-input js-rotate" placeholder="translate y">
+                            <input v-on:input="rotateMethod" v-model="rotate" type="number" class="sg-input js-rotate" placeholder="translate y">
                         </div>
                     </div>
                     <div class="sg-content-box">
