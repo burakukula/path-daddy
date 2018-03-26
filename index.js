@@ -11,6 +11,7 @@ const pathDaddy = new Vue({
         path: loadPath,
         round: 10,
         rotate: 0,
+        mirror: false,
         transformed: ''
     },
     methods: {
@@ -34,10 +35,17 @@ const pathDaddy = new Vue({
         this.rotate;
         this.updateEverything(this.$data);
       },
+      mirrorMethod: function() {
+        this.mirror;
+        this.updateEverything(this.$data);
+      },
 
-      updateEverything: function({path, x, y, scale, round, rotate}) {
+      updateEverything: function({path, x, y, scale, mirror, round, rotate}) {
+        const scaleFirstValue = mirror ? Number(-scale): scale;
+        const scaleSecondValue = mirror ? Number(scale) : scale;
+
         const transformed = svgpath(path)
-        .scale(scale)
+        .scale(scaleFirstValue, scaleSecondValue)
         .translate(Number(x),Number(y))
         .rel()
         .round(round)
