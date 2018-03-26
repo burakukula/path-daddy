@@ -43,16 +43,9 @@
                         </div>
                     </div> 
                     <div class="sg-content-box">
-                        <!-- <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">
-                            <label>
-                                <span class="sg-header-secondary">Mirror</span>
-                            </label>
-                            <input v-on:input="mirrorMethod" v-model="mirror" type="number" step="0.1" class="sg-input" placeholder="mirror scale">
-                        </div> -->
-
                         <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">
-                            <input type="checkbox" id="checkbox" v-model="mirror">
-                            <label for="checkbox">Mirror</label>
+                            <input @click="mirrorMethod" type="checkbox" id="mirrorInput" v-model="mirror">
+                            <label for="mirrorInput">Mirror your path</label>
                         </div>
                         
                         <div class="sg-content-box__content sg-content-box__content--spaced-bottom-large">

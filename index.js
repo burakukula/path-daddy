@@ -36,7 +36,8 @@ const pathDaddy = new Vue({
         this.updateEverything(this.$data);
       },
       mirrorMethod: function() {
-        this.mirror;
+        this.mirror = this.mirror ? false : true;
+        this.scale;
         this.updateEverything(this.$data);
       },
 
