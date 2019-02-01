@@ -228,6 +228,8 @@ const pathDaddy = new Vue({
         x: 0,
         y: 0,
         scale: 1,
+        scaleX: 1,
+        scaleY: 1,
         path: loadPath,
         round: 10,
         rotate: 0,
@@ -241,6 +243,14 @@ const pathDaddy = new Vue({
       },
       scaleMethod: function () {
         this.scale;
+        this.updateEverything(this.$data);
+      },
+      scaleXMethod: function () {
+        this.scaleX;
+        this.updateEverything(this.$data);
+      },
+      scaleYMethod: function () {
+        this.scaleY;
         this.updateEverything(this.$data);
       },
       translateXMethod: function () {
@@ -261,12 +271,25 @@ const pathDaddy = new Vue({
         this.updateEverything(this.$data);
       },
 
-      updateEverything: function({path, x, y, scale, mirror, round, rotate}) {
-        const scaleFirstValue = mirror ? Number(-scale): scale;
-        const scaleSecondValue = mirror ? Number(scale) : scale;
+      updateEverything: function({path, x, y, scale, scaleX, scaleY, mirror, round, rotate}) {
+        // let scaleFirstValue;
+        const scaleValues = {
+          x: Number(scale),
+          y: Number(scale),
+        }
 
+        scaleValues.x = mirror ? Number(-scale): scale;
+        scaleValues.y = mirror ? Number(scale) : scale;
+        
+        scaleValues.x = scaleX ? Number(scaleX): scale;
+        scaleValues.y = scaleX ? 1 : scale;
+
+        scaleValues.x = scaleY ? 1: scale;
+        scaleValues.y = scaleY ? Number(scaleY) : scale;
+
+        console.log(scaleX);
         const transformed = svgpath(path)
-        .scale(scaleFirstValue, scaleSecondValue)
+        .scale(scaleValues.x, scaleValues.y)
         .translate(Number(x),Number(y))
         .rel()
         .round(round)
